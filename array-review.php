@@ -5,14 +5,36 @@
      * array-review.php
      * This script contains a series of exercises designed
      * to review php arrays and functions.
-    */
+     */
 
+    /* Part 1 */
     // Define an array called $animals, which contains panda, alpaca, and boa
     $animals = array('panda', 'alpaca', 'boa');
 
+    // testing functions
+    echo "<h4>Part 1</h4>";
+
+    print_r($animals);
+    echo "<br>";
+
+    sortAndPrint($animals);
+    echo "<br>";
+
+    echo "<p><em>Attempting to add 'Boa' to array...</em></p>";
+    addAnimal("Boa");
+    sortAndPrint($animals);
+    echo "<br>";
+
+    echo "<p><em>Attempting to add 'elephant' to array...</em></p>";
+    addAnimal("elephant");
+    sortAndPrint($animals);
+    echo "<br>";
+
     // write a function that sorts and prints the array
     function sortAndPrint ($array) {
-        echo sort($array);
+        // add foreach loop for nicer printing
+        sort($array);
+        print_r($array);
     }
 
     // write a function that takes a string parameter and adds it to your array,
@@ -23,14 +45,30 @@
 
         // loop through each element in array and check if parameter matches
         foreach($animals as $animal) {
-            // if parameter does not match any contained in the array, add its value to the array
-            if (strtoupper($animal) != strtoupper($creature)) {
-                echo "Adding {$creature}...";
-                array_push($animals, $creature);
+
+            // if creature already exists...
+            if (strtoupper($animal) === strtoupper($creature)) {
+                echo "<p>$creature already exists in the array.</p>";
                 return; //exit function
             }
         }
-        // if creature already exists...
-        echo "This animal already exists in the array.";
+
+        // if parameter does not match any contained in the array, add its value to the array
+        echo "<p>Adding {$creature}...</p>";
+        array_push($animals, $creature);
 
     }
+
+    /* Part 2 */
+    // Define an associative array containing key-value pairs for various cupcake flavors
+    $flavors = array('grasshopper' => 'The Grasshopper',
+                     'maple' => 'Whiskey Maple Bacon',
+                     'carrot' => 'Carrot Walnut',
+                     'velvet' => 'Red Velvet',
+                     'lemon' => 'Lemon Drop',
+                     'tiramisu' => 'Tiramisu');
+
+    // testing associative array
+    echo "<h4>Part 2</h4>";
+
+    print_r($flavors);
