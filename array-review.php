@@ -14,27 +14,31 @@
     // testing functions
     echo "<h4>Part 1</h4>";
 
-    print_r($animals);
-    echo "<br>";
+    echo "<p>";
+    foreach($animals as $animal) {
+        echo $animal." ";
+    }
+    echo "</p>";
 
     sortAndPrint($animals);
-    echo "<br>";
 
     echo "<p><em>Attempting to add 'Boa' to array...</em></p>";
     addAnimal("Boa");
     sortAndPrint($animals);
-    echo "<br>";
 
     echo "<p><em>Attempting to add 'elephant' to array...</em></p>";
     addAnimal("elephant");
     sortAndPrint($animals);
-    echo "<br>";
 
-    // write a function that sorts and prints the array
+    // write a function that sorts and prints the array, with each element side by side
     function sortAndPrint ($array) {
-        // add foreach loop for nicer printing
         sort($array);
-        print_r($array);
+
+        echo "<p>";
+        foreach($array as $element) {
+            echo $element." ";
+        }
+        echo "</p>";
     }
 
     // write a function that takes a string parameter and adds it to your array,
