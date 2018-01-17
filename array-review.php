@@ -11,23 +11,16 @@
     // Define an array called $animals, which contains panda, alpaca, and boa
     $animals = array('panda', 'alpaca', 'boa');
 
-    // testing functions
     echo "<h4>Part 1</h4>";
 
-    echo "<p>";
-    foreach($animals as $animal) {
-        echo $animal." ";
-    }
-    echo "</p>";
-
+    // print animals array, sorted, with elements on a single line
     sortAndPrint($animals);
 
-    echo "<p><em>Attempting to add 'Boa' to array...</em></p>";
-    addAnimal("Boa");
-    sortAndPrint($animals);
-
-    echo "<p><em>Attempting to add 'elephant' to array...</em></p>";
+    // Attempt to add a couple animals to the $animals array
     addAnimal("elephant");
+    sortAndPrint($animals);
+
+    addAnimal("Boa");
     sortAndPrint($animals);
 
     // write a function that sorts and prints the array, with each element side by side
@@ -47,18 +40,19 @@
         // get reference to global variable, $animals
         global $animals;
 
+        echo "<p>Adding {$creature}...";
         // loop through each element in array and check if parameter matches
         foreach($animals as $animal) {
 
             // if creature already exists...
             if (strtoupper($animal) === strtoupper($creature)) {
-                echo "<p>$creature already exists in the array.</p>";
+                echo " $creature already exists in the array...</p>";
                 return; //exit function
             }
         }
 
         // if parameter does not match any contained in the array, add its value to the array
-        echo "<p>Adding {$creature}...</p>";
+        echo "</p>";
         array_push($animals, $creature);
 
     }
@@ -68,11 +62,14 @@
     $flavors = array('grasshopper' => 'The Grasshopper',
                      'maple' => 'Whiskey Maple Bacon',
                      'carrot' => 'Carrot Walnut',
+                     'caramel' => 'Salted Caramel Cupcake',
                      'velvet' => 'Red Velvet',
                      'lemon' => 'Lemon Drop',
                      'tiramisu' => 'Tiramisu');
 
-    // testing associative array
     echo "<h4>Part 2</h4>";
 
-    print_r($flavors);
+    // Print cupcake flavors as a set of checkboxes, using the key for each item as the value of the checkbox
+    foreach($flavors as $key => $value) {
+        echo "<input type='checkbox' name='flavors[]' value='$key'> $value<br>";
+    }
